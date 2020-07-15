@@ -32,7 +32,7 @@ int main() {
 	while (1)
 	{
 		printf("1 : 가장 앞부분에 데이터 추가\n2 : 가장 뒷부분에 데이터 추가\n3 : pre 뒷부분에 데이터 추가\n4 : 데이터 탐색\n5 : 노드 p 삭제\n6 : 노드순서 역순으로 바꾸기\n7 : 데이터 전체 출력\n8 : 프로그램 종료\n");
-		printf("select menu : ");
+		printf("select menu :");
 		scanf("%d", &menu);
 		switch (menu)
 		{
