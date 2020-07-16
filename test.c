@@ -74,8 +74,8 @@ int main() {
 			}
 			else if (menu == 2) {
 				printf("찾을 정수값을 입력해주세요\n");
-				scanf("%d",&input_dataINT);
-				p = search_int_NODE(L,&input_dataINT);
+				scanf("%d", &input_dataINT);
+				p = search_int_NODE(L, &input_dataINT);
 				if (p == NULL) {
 					printf("값이 존재하지 않습니다.\n");
 					break;
@@ -86,6 +86,7 @@ int main() {
 				scanf("%d", &input_dataINT);
 				insert_MiddleNODE(L, p, input_string, &input_dataINT);
 				printf("정상적으로 저장되었습니다.\n");
+			}
 			break;
 		case 4:
 			printf("1 : 문자열 기준\n2 : 정수 기준\n");
@@ -140,17 +141,26 @@ int main() {
 			}
 			break;
 		case 6:
+			reverse(L);
+			printf("순서를 역순으로 재배치 하였습니다.\n");
 			break;
 		case 7:
+			print_LinkedList(L);
 			break;
 		case 8:
+			printf("메모리를 해제합니다.\n");
+			goto EXIT;
 			break;
 		default:
+			printf("잘못된 입력값입니다.\n다시 입력하세요.\n");
 			break;
 			}
 		}
-	}
+	EXIT:
+		free_LinkedList(L);
+		printf("프로그램을 종료합니다.\n");
 }
+
 
 NODE_h* createLinkedList_h() {
 	NODE_h* L;
