@@ -3,10 +3,10 @@
 #include<string.h>
 #define S_SIZE 50
 
-typedef struct NODE {
+typedef struct node {
 	int data;
 	char string[S_SIZE];
-	NODE* link;
+	struct node* link;
 }NODE;
 
 typedef struct {
@@ -164,7 +164,7 @@ int main() {
 
 NODE_h* createLinkedList_h() {
 	NODE_h* L;
-	L = (NODE_h*)mallloc(sizeof(NODE_h));
+	L = (NODE_h*)malloc(sizeof(NODE_h));
 	L->head = NULL;
 	return L;
 }
@@ -209,7 +209,7 @@ void insert_MiddleNODE(NODE_h* L, NODE* pre, char* x, int* i) {
 	strcpy(newNODE->string, x);
 	newNODE->data = *i;
 	if (L == NULL) {
-		newNODE->link = L->head;
+		newNODE->link = NULL;
 		L->head = newNODE;
 	}
 	else if (pre == NULL) {
@@ -234,7 +234,7 @@ void insert_LastNODE(NODE_h* L, char* x, int* i) {
 		return;
 	}
 	tmp = L->head;
-	if (tmp->link != NULL) { tmp = tmp->link; }
+	while (tmp->link != NULL) { tmp = tmp->link; }
 	tmp->link = newNODE;
 }
 
@@ -272,7 +272,7 @@ NODE* search_str_NODE(NODE_h* L, char* x) {
 	NODE* tmp;
 	tmp = L->head;
 	while (tmp != NULL) {
-		if (strcmp(tmp->data, x) == 0)return tmp;
+		if (strcmp(tmp->string, x) == 0)return tmp;
 		else tmp = tmp->link;
 	}
 	return tmp;
