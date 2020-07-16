@@ -28,6 +28,8 @@ int main() {
 	NODE_h* L;
 	NODE* p;
 	int menu;
+	int input_dataINT;
+	char input_string[S_SIZE];
 	L = createLinkedList_h();
 	while (1)
 	{
@@ -37,18 +39,61 @@ int main() {
 		switch (menu)
 		{
 		case 1:
+			printf("저장할 문자열을 입력하세요\n");
+			scanf("%s", input_string);
+			printf("저장할 정수값을 입력하세요\n");
+			scanf("%d", &input_dataINT);
+			insert_FirstNODE(L, input_string, &input_dataINT);
+			printf("정상적으로 저장되었습니다.\n");
 			break;
 		case 2:
+			printf("저장할 문자열을 입력하세요\n");
+			scanf("%s", input_string);
+			printf("저장할 정수값을 입력하세요\n");
+			scanf("%d", &input_dataINT);
+			insert_LastNODE(L, input_string, &input_dataINT);
+			printf("정상적으로 저장되었습니다.\n");
 			break;
 		case 3:
+			printf("1 : 문자열 기준\n2 : 정수 기준\n");
+			scanf("%d", &menu);
+			if (menu == 1) {
+				printf("찾을 문자열을 입력해주세요\n");
+				scanf("%s", input_string);
+				p = search_str_NODE(L, input_string);
+				if (p == NULL) {
+					printf("값이 존재하지 않습니다.\n");
+					break;
+				}
+				printf("저장할 문자열을 입력하세요\n");
+				scanf("%s", input_string);
+				printf("저장할 정수값을 입력하세요\n");
+				scanf("%d", &input_dataINT);
+				insert_MiddleNODE(L, p, input_string, &input_dataINT);
+				printf("정상적으로 저장되었습니다.\n");
+			}
+			else if (menu == 2) {
+				printf("찾을 정수값을 입력해주세요\n");
+				scanf("%d",&input_dataINT);
+				p = search_int_NODE(L,&input_dataINT);
+				if (p == NULL) {
+					printf("값이 존재하지 않습니다.\n");
+					break;
+				}
+				printf("저장할 문자열을 입력하세요\n");
+				scanf("%s", input_string);
+				printf("저장할 정수값을 입력하세요\n");
+				scanf("%d", &input_dataINT);
+				insert_MiddleNODE(L, p, input_string, &input_dataINT);
+				printf("정상적으로 저장되었습니다.\n");
 			break;
 		case 4:
+			printf("1 : 문자열 기준\n2 : 정수 기준\n");
 			scanf("%d", &menu);
 			if (menu == 1) {
 
 			}
 			else if (menu == 2) {
-
 			}
 			break;
 		case 5:
@@ -61,9 +106,9 @@ int main() {
 			break;
 		default:
 			break;
+			}
 		}
 	}
-
 }
 
 NODE_h* createLinkedList_h() {
