@@ -91,9 +91,28 @@ int main() {
 			printf("1 : 문자열 기준\n2 : 정수 기준\n");
 			scanf("%d", &menu);
 			if (menu == 1) {
-
+				printf("찾을 문자열을 입력해주세요\n");
+				scanf("%s", input_string);
+				p = search_str_NODE(L, input_string);
+				if (p == NULL) {
+					printf("값이 존재하지 않습니다.\n");
+					break;
+				}
+				printf("%d %s 를 찾았습니다.\n", p->data, p->string);
 			}
 			else if (menu == 2) {
+				printf("1 : 문자열 기준\n2 : 정수 기준\n");
+				scanf("%d", &menu);
+				if (menu == 1) {
+				printf("찾을 정수값을 입력해주세요\n");
+				scanf("%d", &input_dataINT);
+				p = search_int_NODE(L, &input_dataINT);
+				if (p == NULL) {
+					printf("값이 존재하지 않습니다.\n");
+					break;
+				}
+				printf("%d %s 를 찾았습니다.\n", p->data, p->string);
+
 			}
 			break;
 		case 5:
