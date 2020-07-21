@@ -127,7 +127,7 @@ int main() {
 			printf("please Enter string data\n");
 			scanf("%s", input_str);
 			insertFirstNode(CL,&input_int,input_str);
-			printf("data adding complete\n");
+			printf("data adding complete\n\n");
 			break;
 		case 2:
 			printf("1 : int\n2 : string\n");
@@ -155,7 +155,7 @@ int main() {
 				break;
 			}
 			insertMiddleNode(CL, p, &input_int, input_str);
-			printf("data adding complete\n");
+			printf("data adding complete\n\n");
 			break;
 		case 3:
 			printf("1 : int\n2 : string\n");
@@ -164,7 +164,8 @@ int main() {
 				printf("please Enter int data to find\n");
 				scanf("%d", &input_int);
 				p = search_int_NODE(CL, &input_int);
-			}else if(menu == 2){
+			}
+			else if(menu == 2){
 				printf("please Enter string data to find\n");
 				scanf("%s", input_str);
 				p = search_str_NODE(CL, input_str);
@@ -173,7 +174,27 @@ int main() {
 				printf("please select available menu.\n\n");
 				break;
 			}
-			printf("Data found : %d %s\n", p->int_data, p->string);
+			printf("Data found : %d %s\n\n", p->int_data, p->string);
+			break;
+		case 4:
+			printf("1 : int\n2 : string\n");
+			scanf("%d", &menu);
+			if (menu == 1) {
+				printf("please Enter int data to delete\n");
+				scanf("%d", &input_int);
+				p = search_int_NODE(CL, &input_int);
+			}
+			else if (menu == 2) {
+				printf("please Enter str data to delete\n");
+				scanf("%s", input_str);
+				p = search_str_NODE(CL, input_str);
+			}
+			else {
+				printf("please select available menu.\n\n");
+				break;
+			}
+			deleteNode(CL, p);
+			printf("Delete complete\n\n");
 			break;
 		default:
 			printf("please select available menu.\n\n");
