@@ -150,8 +150,30 @@ int main() {
 				printf("please Enter string data\n");
 				scanf("%s", input_str);
 			}
+			else {
+				printf("please select available menu.\n\n");
+				break;
+			}
 			insertMiddleNode(CL, p, &input_int, input_str);
 			printf("data adding complete\n");
+			break;
+		case 3:
+			printf("1 : int\n2 : string\n");
+			scanf("%d", &menu);
+			if (menu == 1) {
+				printf("please Enter int data to find\n");
+				scanf("%d", &input_int);
+				p = search_int_NODE(CL, &input_int);
+			}else if(menu == 2){
+				printf("please Enter string data to find\n");
+				scanf("%s", input_str);
+				p = search_str_NODE(CL, input_str);
+			}
+			else {
+				printf("please select available menu.\n\n");
+				break;
+			}
+			printf("Data found : %d %s\n", p->int_data, p->string);
 			break;
 		default:
 			printf("please select available menu.\n\n");
