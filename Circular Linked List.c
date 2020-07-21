@@ -95,5 +95,38 @@ NODE* search_int_Node(NODE_h* CL, int* i) {
 		if (temp->int_data == *i) return temp;
 		else temp = temp->link;
 	} while (temp!=CL->head);
+	return NULL;
+}
 
+NODE* search_str_NODE(NODE_h* CL, char* s) {
+	NODE* temp;
+	temp = CL->head;
+	if (temp==NULL) return NULL;
+	do {
+		if (strcmp(temp->string, s) == 0) return temp;
+		else temp = temp->link;
+	} while (temp!=CL->head);
+	return NULL;
+}
+
+int main() {
+	NODE_h* CL;
+	NODE* p;
+	int menu;
+	int input_int;
+	char input_str[S_SIZE];
+	CL = createLinkedlist_h();
+	while (1) {
+		printf("1 : insert data on first\n2 : insert data on middle\n3 : search data\n4 : delete data\n5 : print all data\n6 : shutdown\n");
+		scanf("%d", &menu);
+		switch (menu)
+		{
+		case 1:
+
+			insertFirstNode();
+		default:
+			printf("please select available menu.\n\n");
+			break;
+		}
+	}
 }
