@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 #define S_SIZE 50
 
 typedef struct node {
@@ -13,7 +13,7 @@ typedef struct {
 	NODE* head;
 }NODE_h;
 
-NODE* createLinkedlist_h() {
+NODE_h* createLinkedlist_h() {
 	NODE_h* CL;
 	CL = (NODE_h*)malloc(sizeof(NODE_h));
 	CL->head = NULL;
@@ -196,9 +196,14 @@ int main() {
 			deleteNode(CL, p);
 			printf("Delete complete\n\n");
 			break;
+		case 5:
+			printlist(CL);
+		case 6:
+			goto EXIT;
 		default:
 			printf("please select available menu.\n\n");
 			break;
 		}
 	}
+	EXIT:
 }
