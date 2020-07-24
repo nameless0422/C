@@ -21,47 +21,72 @@ D_NODE_h* create_D_NODE() {
 	return DL;
 }
 
-void insertFirstNODE_d(D_NODE_h* DL, int* i, char* s) {
+void insertNODE(D_NODE_h* DL, D_NODE* p, int* i, char* s) {
 	D_NODE* newNODE;
 	newNODE = (D_NODE*)malloc(sizeof(D_NODE));
 	newNODE->int_data = *i;
 	strcpy(newNODE->string, s);
-	newNODE->link = DL->head;
-	DL->head = newNODE;
-	newNODE->pre = NULL;
-}
-
-void insertMiddleNODE_d(D_NODE_h* DL, D_NODE* pre, int* i, char* s) {
-	D_NODE* newNODE;
-	newNODE = (D_NODE*)malloc(sizeof(D_NODE));
-	strcpy(newNODE->string, s);
-	newNODE->int_data = *i;
-	if (DL == NULL) {
+	if (DL->head == NULL) {
+		newNODE->pre = NULL;
 		newNODE->link = NULL;
 		DL->head = newNODE;
 	}
-	else if (pre==NULL) {
-		DL->head = newNODE;
-	}
-	else{
-		newNODE->link = pre->link;
-		pre->link = newNODE;
-		newNODE->pre = pre;
+	else {
+		newNODE->link = p->link;
+		p->link = newNODE;
+		newNODE->pre = p;
+		if (newNODE->link != NULL) {
+			newNODE->link->pre = newNODE;
+		}
 	}
 }
 
-void insertLastNODE_d(D_NODE_h* DL,int*i,char*s) {
-	D_NODE* newNODE, * temp;
-	newNODE = (D_NODE*)malloc(sizeof(D_NODE));
-	newNODE->int_data = *i;
-	strcpy(newNODE->string, s);
-	newNODE->link = NULL;
-	if (DL->head == NULL) {
-		DL->head = newNODE;
-		return;
+void printD_NODE(D_NODE_h* DL) {
+	D_NODE* p;
+	printf("DL = (");
+	p = DL->head;
+	while (p != NULL) {
+		printf("%d %s", p->int_data, p->string);
+		p = p->link;
+		if (p != NULL)printf(", ");
 	}
-	temp = DL->head;
-	while (temp->link != NULL) { temp = temp->link; }
-	temp->link = newNODE;
-	newNODE->pre = temp;
+	printf(")\n");
+}
+
+void DeleteNODE(D_NODE_h* DL, D_NODE* p) {
+	if (DL->head == NULL) return;
+	else if (p == NULL)return;
+	else {
+		p->pre->link = p->link;
+		p->link->pre = p->pre;
+		free(p);
+	}
+}
+
+D_NODE* search_int_NODE(D_NODE_h* DL, int* i) {
+	D_NODE* p;
+	p = DL->head;
+	while (p != NULL) {
+		if (p->int_data == *i) {
+			return p;
+		}
+		else {
+			p = p->link;
+		}
+	}
+	return p;
+}
+
+D_NODE* search_str_NODE(D_NODE_h* DL, char* s) {
+	D_NODE* p;
+	p = DL->head;
+	while (p!=NULL) {
+		if (strcmp(p->string, s) == 0) {
+			return p;
+		}
+		else {
+			p = p->link;
+		}
+	}
+	return p;
 }
