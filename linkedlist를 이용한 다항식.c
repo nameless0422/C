@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 typedef struct Node {
 	float coef;
@@ -79,20 +80,25 @@ void printPoly(NODE_h* L) {
 
 void main() {
 	NODE_h* A, * B, * C;
+	float coet;
+	int expo;
 	A = createLinkedlist();
 	B = createLinkedlist();
 	C = createLinkedlist();
 
-	appendTerm(A, 4, 3);
-	appendTerm(A, 3, 2);
-	appendTerm(A, 5, 1);
+	for(int i = 4; i > 0; i--){
+		printf("A(x)의 %d차 항의 계수와 지수를 입력하시오\n",i);
+   		scanf("%f %d",&coet,&expo);
+		appendTerm(A,coet,expo);
+	}
 	printf("\n A(x) =");
 	printPoly(A);
 
-	appendTerm(B, 3, 4);
-	appendTerm(B, 1, 3);
-	appendTerm(B, 2, 1);
-	appendTerm(B, 1, 0);
+	for(int i = 4; i > 0; i--){
+		printf("B(x)의 %d차 항의 계수와 지수를 입력하시오\n",i);
+		scanf("%f %d",&coet,&expo);
+		appendTerm(B,coet,expo);
+	}
 	printf("\n B(x) =");
 	printPoly(B);
 
