@@ -56,3 +56,15 @@ void printStack() {
 	}
 	printf("] ");
 }
+
+void main() {
+	element item;
+	printf("\n** 순차 스택 연산 **\n");
+	printStack();
+	for (int i = 1; i < 4; i++) {
+		push(i); printStack;
+	}
+ 
+	item = peek();
+	printStack();
+}
